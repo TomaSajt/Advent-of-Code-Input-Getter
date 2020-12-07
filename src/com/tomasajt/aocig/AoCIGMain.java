@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -45,11 +46,12 @@ public class AoCIGMain extends JFrame implements ActionListener, ItemListener {
 
 	private AoCIGMain(String[] args) {
 		super("Advent of Code input getter");
-		calendar = GregorianCalendar.getInstance();
+		calendar = GregorianCalendar.getInstance(TimeZone.getTimeZone("UTC"));
 		calendar.setTime(new Date());
 		highestYear = calendar.get(Calendar.YEAR) - (calendar.get(Calendar.MONTH) < 11 ? 1 : 0);
-		highestDay = Math.min(calendar.get(Calendar.DAY_OF_MONTH)
-				- (calendar.get(Calendar.HOUR) < 6 && calendar.get(Calendar.AM) == 1 ? 1 : 0), 25);
+		System.out.println("year:"+calendar.get(Calendar.YEAR));
+		System.out.println("day:"+calendar.get(Calendar.DAY_OF_MONTH));
+		System.out.println("hour:"+calendar.get(Calendar.HOUR_OF_DAY));
 		Insets insets = this.getInsets();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(insets.left + 400 + insets.right, insets.top + 240 + insets.bottom));
@@ -146,7 +148,7 @@ public class AoCIGMain extends JFrame implements ActionListener, ItemListener {
 	private void reloadDayCombo() {
 		highestDay = ((Integer) yearCombo.getSelectedItem()).intValue() == highestYear
 				? Math.min(calendar.get(Calendar.DAY_OF_MONTH)
-						- (calendar.get(Calendar.HOUR) < 6 && calendar.get(Calendar.AM_PM) == Calendar.AM ? 1 : 0), 25)
+						- (calendar.get(Calendar.HOUR_OF_DAY) < 5 ? 1 : 0), 25)
 				: 25;
 		Integer selectedItem = dayCombo == null ? highestDay : (Integer) dayCombo.getSelectedItem();
 		if (dayCombo != null)
