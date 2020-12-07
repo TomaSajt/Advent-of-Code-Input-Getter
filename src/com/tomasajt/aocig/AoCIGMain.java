@@ -146,7 +146,7 @@ public class AoCIGMain extends JFrame implements ActionListener, ItemListener {
 	private void reloadDayCombo() {
 		highestDay = ((Integer) yearCombo.getSelectedItem()).intValue() == highestYear
 				? Math.min(calendar.get(Calendar.DAY_OF_MONTH)
-						- (calendar.get(Calendar.HOUR) < 6 && calendar.get(Calendar.AM) == 1 ? 1 : 0), 25)
+						- (calendar.get(Calendar.HOUR) < 6 && calendar.get(Calendar.AM_PM) == Calendar.AM ? 1 : 0), 25)
 				: 25;
 		Integer selectedItem = dayCombo == null ? highestDay : (Integer) dayCombo.getSelectedItem();
 		if (dayCombo != null)
