@@ -1,5 +1,7 @@
 package com.tomasajt.aocig;
 
+import java.util.Comparator;
+
 import org.json.simple.JSONObject;
 
 public class LeaderboardMember {
@@ -43,4 +45,18 @@ public class LeaderboardMember {
 	public long getLastStarTs() {
 		return last_star_ts;
 	}
+	static class SortByStarsDesc implements Comparator<LeaderboardMember> 
+	{
+	    public int compare(LeaderboardMember a, LeaderboardMember b) 
+	    { 
+	        return (int)(b.getStars() - a.getStars()); 
+	    } 
+	} 
+	static class SortByLocalScoreDesc implements Comparator<LeaderboardMember> 
+	{
+	    public int compare(LeaderboardMember a, LeaderboardMember b) 
+	    { 
+	        return (int)(b.getLocalScore() - a.getLocalScore()); 
+	    } 
+	} 
 }
