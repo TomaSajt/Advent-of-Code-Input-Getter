@@ -1,4 +1,6 @@
 # Advent-of-Code-Input-Getter
- Usage: create a shortcut somewhere referencing your .jar file. Right click on the shortcut -> Properties , and put a space and your session ID after the original text. It should look something like this: folder/aocig.jar yourSessionID
+Usage:
+You don't have to type all the IDs in every time. Your first arg should be your session ID and your second arg should be your leaderboard ID. These are optional of course.
+You can run the program without the command line by using shortcuts and giving the args there.
  
 Get your release at https://github.com/TomaSajt/Advent-of-Code-Input-Getter/releases
